@@ -1,0 +1,98 @@
+.login-container {
+  position: relative;
+  background-color: #E6D5C3;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  max-width: 300px;
+  margin: 2rem auto;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 100;
+  color: #504646;
+}
+
+h1 {
+  color: #504646;
+  font-family: 'Fredoka One', cursive;
+  font-size: 24px;
+  margin: 10px 0;
+  text-align: center; /* Ensure the title is centered */
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #b3a394;
+  margin: 8px 0;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #F0ECE3;
+  color: #5D5C61;
+}
+
+/* Adjust .btn to .login-btn if you're using a different class for the login button */
+.login-btn, .btn {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+}
+
+.login-btn:hover, .btn:hover {
+  background-color: #fff;
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.nav-link {
+  color: #000000;
+  transition: color 0.2s ease;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  color: rgb(150, 81, 83);
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -12%;
+  background-image: url('../../../../assets/imgs/teonobackground.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  opacity: 0.8;
+}
+p.text-center {
+  margin-top: 20px;
+}
+.form-page-wrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Full viewport height ensures it can center vertically over the entire screen */
+  padding: 20px; /* To ensure there's some space on the edges */
+  box-sizing: border-box; /* Ensures padding does not add to the total width/height */
+}
+
+.container {
+  max-width: 420px; /* Or your specified width */
+  width: 100%; /* Ensures it doesn't overflow on smaller screens */
+  /* Additional styling for your form container */
+}

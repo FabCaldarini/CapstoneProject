@@ -1,1 +1,56 @@
-<p>dashboard works!</p>
+<div class="container-fluid d-flex align-items-center justify-content-center container-parent" style="min-height: 90vh;">
+  <div class="row justify-content-center container-welcome-page">
+    <!-- Navbar -->
+    <div class="col-lg-4 col-md-6 col-sm-12 navbar-container-welcome-page">
+      <h1 class="welcome-page-title"><a routerLink="comics-page">Matteo Zagati's Portfolio</a></h1>
+        <ul class="nav flex-column" style="width: auto;">
+          <li class="nav-item">
+            <a class="nav-link active welcome-page-home" routerLink="comics-page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link welcome-page-gallery" href="#">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link welcome-page-login" routerLink="../auth/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link welcome-page-register" routerLink="../auth/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link welcome-page-socials" href="https://www.instagram.com/imzago_?igsh=ZjZxdGx4MnpvNTJ5" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          </li>
+        </ul>
+    </div>
+    <!-- Biography -->
+    <div class="col-lg-4 col-md-6 col-sm-12 pt-4">
+      <div class="bio_container">
+        <p class="bio">Hello!,</p>
+        <p class="bio">I'm Matteo from Italy, and I'm thrilled to share my passion for art and storytelling with you through my portfolio.</p>
+        <p class="bio">Having studied at the International Academy of Comics in Milan for four years, I've cultivated my skills and am now on the brink of publishing my first comic book.</p>
+        <p class="bio">Within these pages, you'll find a glimpse of my journey, from character design to sequential storytelling. Each piece reflects my dedication and love for the craft.</p>
+        <p class="bio">
+          Thank you for exploring my portfolio, and I hope my work resonates with you.
+        </p>
+        <p class="bio">Warm regards,</p>
+        <p class="bio">Matteo Zagati</p>
+      </div>
+    </div>
+    <!-- Image -->
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="img_container" style="overflow: hidden;">
+        <img  src="../../../assets/imgs/teonobackground.png" alt="Matteo's avatar" class="responsive-img">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <a type="button" class="btn welcome-page-button" routerLink='comics-page'>Hop In!</a>
+    </div>
+  </div>
+</div>
+
+
+
+

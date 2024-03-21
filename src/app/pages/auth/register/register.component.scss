@@ -1,0 +1,123 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+
+.registration-container,
+/* Add .login-container if you're applying these styles for the login form as well */
+.login-container {
+  position: relative;
+  background-color: #E6D5C3;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 100;
+  color: #504646;
+  width: 100%;
+  max-width: 300px; /* or as per design */
+  margin: auto;
+  align-self: center; /* Ensure it's centered within the flex container */
+}
+
+@media (max-height: 500px) { /* Example breakpoint; adjust based on testing */
+  .registration-container {
+    margin-top: 2vh; /* Reduces top margin for very small viewports */
+  }
+}
+
+@media (max-height: 500px) {
+  .form-page-wrapper {
+    padding-top: 2vh; /* Smaller top padding for very small viewports */
+  }
+}
+
+.form-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Keeps content vertically centered */
+  align-items: center; /* Centers content horizontally */
+  min-height: 100vh;
+  padding:1rem; /* Adds some horizontal padding */
+  padding-top: 5vh;
+}
+
+h1 {
+  color: #504646;
+  font-family: 'Fredoka One', cursive;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #b3a394;
+  margin: 8px 0;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #F0ECE3;
+  color: #5D5C61;
+}
+
+
+.btn {
+  background-color:
+  rgb(185, 173, 173);
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn:hover {
+  background-color: #fff;
+}
+.btn:hover{
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+
+.nav-link {
+  color: #000000;
+  transition: color 0.2s ease;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  color: rgb(150, 81, 83);
+}
+
+.registration-container-margin{
+  height: 50%;
+}
+
+.registration-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10%;
+  background-image: url('../../../../assets/imgs/teonobackground.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  opacity: 0.8;
+}

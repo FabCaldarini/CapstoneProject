@@ -1,0 +1,123 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+
+.container-welcome-page{
+  width: 100%;
+  padding-left: 3%;
+}
+.navbar-container-welcome-page li a{
+  display: inline;;
+}
+.navbar-container-welcome-page li{
+  margin-top:1.5%;
+}
+
+.welcome-page-title a{
+  font-size: 20px;
+  text-decoration: none;
+  color: #968787;
+  font-family: Cabin;
+  font-weight: 400;
+}
+
+.welcome-page-home,
+.welcome-page-gallery,
+.welcome-page-login,
+.welcome-page-register,
+.welcome-page-socials{
+  color: #968787;
+  font-family: Georgia,serif;
+
+}
+.welcome-page-home:hover,
+.welcome-page-gallery:hover,
+.welcome-page-login:hover,
+.welcome-page-register:hover,
+.welcome-page-socials:hover{
+  color:rgb(150, 81, 83) ;
+}
+
+.welcome-page-login,
+.welcome-page-register,
+.welcome-page-socials{
+  font-weight: bold;
+}
+
+
+.bio{
+  font-family: Cabin;
+  font-weight: 400;
+  color:rgb(93, 78, 78);
+  align-items: center;
+}
+
+
+.responsive-img{
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 446px) {
+  .responsive-img {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 742px) {
+  .responsive-img {
+    max-width: 70%;
+  }
+}
+
+@media (min-width: 769px) {
+  .responsive-img {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-img {
+    max-width: 70%;
+  }
+}
+
+.welcome-page-button{
+  background-color:
+  rgb(185, 173, 173);
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
+
+
+.welcome-page-button:hover {
+  background-color: #fff;
+}
+
+.welcome-page-button:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .welcome-page-button {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
