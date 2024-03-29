@@ -1,1 +1,80 @@
-<p>comics-page works!</p>
+ <!-- Mobile Navbar -->
+ <div class="mobile-navbar d-lg-none">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="comics-page">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="../../dashboard">Bio</a>
+    </li>
+    <li class="nav-item" *ngIf="!userService.isLoggedIn()">
+      <a class="nav-link" routerLink="../../auth/login">Login</a>
+    </li>
+    <li class="nav-item" *ngIf="!userService.isLoggedIn()">
+      <a class="nav-link" routerLink="../../auth/register">Register</a>
+    </li>
+    <li class="nav-item" *ngIf="userService.isLoggedIn()">
+      <button class="btn btn-outline-danger" (click)="userService.logout()">Logout</button>
+    </li>
+  </ul>
+</div>
+  <div class="page-container">
+    <!-- Navbar Section -->
+    <div class="navbar-container">
+      <h1><a routerLink="/comics-page">Matteo Zagati's Portfolio</a></h1>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="comics-page">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="../../dashboard">Bio</a>
+        </li>
+        <li class="nav-item" *ngIf="!userService.isLoggedIn()">
+          <a class="nav-link" routerLink="../../auth/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!userService.isLoggedIn()">
+          <a class="nav-link" routerLink="../../auth/register">Register</a>
+        </li>
+        <div class="col-12" *ngIf="userService.isLoggedIn()">
+          <a class="btn welcome-page-button small-logout-btn" (click)="logout()">Logout</a>
+        </div>
+        <li class="nav-item">
+          <a class="nav-link welcome-page-socials" href="https://www.instagram.com/imzago_?igsh=ZjZxdGx4MnpvNTJ5" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+
+        <div class="container">
+        </div>
+      </ul>
+      <p class="copyright">Copyright ©. by Matteo Zagati. Any of images of this web may not be reproduced without my permission. Thank you.</p>
+        <div *ngIf="userService.isAdmin()">
+          <form (submit)="createComic($event)" class="login-container">
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" class="form-control small-input" required>
+            </div>
+            <div class="form-group">
+              <label for="author">Author:</label>
+              <input type="text" id="author" name="author" class="form-control small-input" required>
+            </div>
+            <div class="form-group">
+              <label for="image">Image:</label>
+              <input type="file" id="image" name="image" class="form-control small-input" required>
+            </div>
+            <button type="submit" class="login-btn small-btn">Create Comic</button>
+          </form>
+        </div>
+  </div>
+    <div class="body-content">
+
+      <div class="images-container">
+        <div *ngFor="let comic of comics" class="comic-item" (click)="openModal(comic)">
+          <img [src]="comic.imageUrl" alt="Comic Image">
+        </div>
+      </div>
+      <app-modal-overlay [selectedComic]="selectedComic" (closeModal)="closeModal()"></app-modal-overlay>
+
+
+
+
+    </div>
+  </div>

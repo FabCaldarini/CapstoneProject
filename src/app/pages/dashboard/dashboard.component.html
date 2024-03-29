@@ -3,24 +3,27 @@
     <!-- Navbar -->
     <div class="col-lg-4 col-md-6 col-sm-12 navbar-container-welcome-page">
       <h1 class="welcome-page-title"><a routerLink="comics-page">Matteo Zagati's Portfolio</a></h1>
-        <ul class="nav flex-column" style="width: auto;">
-          <li class="nav-item">
-            <a class="nav-link active welcome-page-home" routerLink="comics-page">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link welcome-page-gallery" href="#">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link welcome-page-login" routerLink="../auth/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link welcome-page-register" routerLink="../auth/register">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link welcome-page-socials" href="https://www.instagram.com/imzago_?igsh=ZjZxdGx4MnpvNTJ5" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          </li>
-        </ul>
+      <ul class="nav flex-column" style="width: auto;">
+        <li class="nav-item">
+          <a class="nav-link active welcome-page-home" routerLink="comics-page">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="!userService.isLoggedIn()">
+          <a class="nav-link welcome-page-login" routerLink="../auth/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!userService.isLoggedIn()">
+          <a class="nav-link welcome-page-register" routerLink="../auth/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link welcome-page-socials" href="https://www.instagram.com/imzago_?igsh=ZjZxdGx4MnpvNTJ5" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <div class="col-12" *ngIf="userService.isLoggedIn()">
+          <a class="btn welcome-page-button small-logout-btn" (click)="logout()">Logout</a>
+        </div>
+
+      </ul>
     </div>
+
+
     <!-- Biography -->
     <div class="col-lg-4 col-md-6 col-sm-12 pt-4">
       <div class="bio_container">
@@ -41,13 +44,14 @@
         <img  src="../../../assets/imgs/teonobackground.png" alt="Matteo's avatar" class="responsive-img">
       </div>
     </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 text-center">
+          <a type="button" class="btn welcome-page-button" routerLink='comics-page'>Hop In!</a>
+        </div>
   </div>
 </div>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 text-center">
-      <a type="button" class="btn welcome-page-button" routerLink='comics-page'>Hop In!</a>
-    </div>
+
   </div>
 </div>
 

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderVerticalComponent } from './components/header-vertical/header-vertical.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { provideHttpClient } from '@angular/common/http'; // Importa provideHttpClient
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../../interceptors/auth.interceptor';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,16 @@ import { provideHttpClient } from '@angular/common/http'; // Importa provideHttp
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule
   ],
   providers: [
-    provideClientHydration(),
-    provideHttpClient() // Abilita fetch per HttpClient
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

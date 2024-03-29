@@ -1,6 +1,6 @@
+import { UserService } from './../../../services/user.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserRegister } from '../../../models/i-user-dto';
-import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,8 +14,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   };
 
   registering = false;
+  isLoggedIn = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router,) {}
 
   ngOnInit() {
     if (typeof document !== 'undefined') {
@@ -45,6 +46,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.registering = false;
         }
       );
+  }
+  logout() {
+    this.userService.logout().subscribe(
+      () => {
+        console.log('Logout avvenuto con successo');
+        this.router.navigate(['auth/login']);
+      },
+      (error) => {
+        console.error('Errore durante il logout:', error);
+      }
+    );
   }
 }
 
