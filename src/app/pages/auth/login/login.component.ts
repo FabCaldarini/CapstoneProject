@@ -36,9 +36,7 @@ export class LoginComponent {
       .subscribe(
         (response) => {
           console.log('Login successful:', response);
-          setTimeout(() => {
             this.router.navigate(['../../dashboard/comics-page'])
-          }, 2000);
         },
         (error) => {
           console.error('Login error:', error);
