@@ -8,7 +8,6 @@
 
 
 .registration-container,
-/* Add .login-container if you're applying these styles for the login form as well */
 .login-container {
   position: relative;
   background-color: #E6D5C3;
@@ -19,30 +18,30 @@
   font-weight: 100;
   color: #504646;
   width: 100%;
-  max-width: 300px; /* or as per design */
+  max-width: 300px;
   margin: auto;
-  align-self: center; /* Ensure it's centered within the flex container */
+  align-self: center;
 }
 
-@media (max-height: 500px) { /* Example breakpoint; adjust based on testing */
+@media (max-height: 500px) {
   .registration-container {
-    margin-top: 2vh; /* Reduces top margin for very small viewports */
+    margin-top: 2vh;
   }
 }
 
 @media (max-height: 500px) {
   .form-page-wrapper {
-    padding-top: 2vh; /* Smaller top padding for very small viewports */
+    padding-top: 2vh;
   }
 }
 
 .form-page-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Keeps content vertically centered */
-  align-items: center; /* Centers content horizontally */
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  padding:1rem; /* Adds some horizontal padding */
+  padding:1rem;
   padding-top: 5vh;
 }
 

@@ -1,0 +1,11 @@
+<div>
+  <h2>Comic Details</h2>
+  <p>Comic ID: {{ comicId }}</p>
+  <p><strong>Likes:</strong> {{ comic?.likeCount }}</p>
+  <button (click)="toggleLike()">{{ comic?.hasLiked ? 'Unlike' : 'Like' }}</button>
+  <h3>Comments</h3>
+  <div *ngFor="let comment of comments">
+  </div>
+</div>
+
+

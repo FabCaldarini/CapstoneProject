@@ -16,7 +16,7 @@ h1 {
   font-family: 'Fredoka One', cursive;
   font-size: 24px;
   margin: 10px 0;
-  text-align: center; /* Ensure the title is centered */
+  text-align: center;
 }
 
 .form-control {
@@ -29,7 +29,7 @@ h1 {
   color: #5D5C61;
 }
 
-/* Adjust .btn to .login-btn if you're using a different class for the login button */
+
 .login-btn, .btn {
   background-color: #fbeee0;
   border: 2px solid #422800;
@@ -84,15 +84,14 @@ p.text-center {
 }
 .form-page-wrapper {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  min-height: 100vh; /* Full viewport height ensures it can center vertically over the entire screen */
-  padding: 20px; /* To ensure there's some space on the edges */
-  box-sizing: border-box; /* Ensures padding does not add to the total width/height */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .container {
-  max-width: 420px; /* Or your specified width */
-  width: 100%; /* Ensures it doesn't overflow on smaller screens */
-  /* Additional styling for your form container */
+  max-width: 420px;
+  width: 100%;
 }

@@ -1,0 +1,16 @@
+<div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-body">
+      <img *ngIf="selectedComic" [src]="selectedComic.imageUrl" class="img-fluid" alt="Comic Image">
+      <button *ngIf="selectedComic" type="button" class="btn btn-outline-primary mt-3" (click)="likeComic()">Like</button>
+      <span *ngIf="selectedComic">{{ selectedComic.likes }}</span> Likes
+      <div *ngIf="selectedComic">
+        <h6>Comments</h6>
+        <div *ngFor="let comment of selectedComic.comments">{{ comment }}</div>
+        <input [(ngModel)]="newComment" placeholder="Add a comment" />
+        <button (click)="postComment()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -20,13 +20,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (typeof document !== 'undefined') {
-      document.body.style.backgroundColor = '#FFF8E7'; // Imposta il colore di sfondo solo quando è disponibile `document`
+      document.body.style.backgroundColor = '#FFF8E7';
     }
   }
 
   ngOnDestroy() {
     if (typeof document !== 'undefined') {
-      document.body.style.backgroundColor = ''; // Reimposta il colore di sfondo quando il componente viene distrutto
+      document.body.style.backgroundColor = '';
     }
   }
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.registering = false;
           setTimeout(() => {
             this.router.navigate(['auth/login'])
-          }, 2000); // Naviga alla pagina di login dopo 2 secondi
+          }, 2000);
         },
         (error) => {
           console.error('Errore durante la registrazione:', error);

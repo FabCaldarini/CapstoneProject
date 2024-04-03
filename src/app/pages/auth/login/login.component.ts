@@ -20,13 +20,13 @@ export class LoginComponent {
 
   ngOnInit() {
     if (typeof document !== 'undefined') {
-      document.body.style.backgroundColor = '#FFF8E7'; // Imposta il colore di sfondo solo quando è disponibile `document`
+      document.body.style.backgroundColor = '#FFF8E7';
     }
   }
 
   ngOnDestroy() {
     if (typeof document !== 'undefined') {
-      document.body.style.backgroundColor = ''; // Reimposta il colore di sfondo quando il componente viene distrutto
+      document.body.style.backgroundColor = '';
     }
   }
 

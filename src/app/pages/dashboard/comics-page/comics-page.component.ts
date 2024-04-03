@@ -6,7 +6,10 @@ import { HttpEventType } from '@angular/common/http';
 import { UserService } from '../../../services/user.service';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Comic, Comment } from '../../../models/comic';
+import { Comic } from '../../../models/comic';
+import { Comment} from '../../../models/comment';
+import { LikeService } from '../../../services/like.service';
+import {ComicDetails} from '../../../models/comic-details';
 
 @Component({
   selector: 'app-comics-page',
@@ -27,6 +30,7 @@ export class ComicsPageComponent implements OnInit {
   constructor(
     private comicsService: ComicsService,
     public userService: UserService,
+    private likeService: LikeService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
@@ -39,18 +43,21 @@ export class ComicsPageComponent implements OnInit {
     this.comicsService.createComic({ title, author }).subscribe({
       next: (comic) => {
         console.log('Comic created successfully', comic);
-        this.comic = comic; // Store the uploaded comic data
-        const comicId = comic.id; // Extract the ID of the newly created comic
+        this.comic = comic;
+        const comicId = comic.id;
         const file = form['image'].files[0];
         if (file) {
-          this.uploadComicImage(comicId, file); // Use the ID to upload the image
+          this.uploadComicImage(comicId, file);
         }
-        // Update comics array
-        this.comics.push(comic); // Add the new comic to the comics array
+
+        this.comics.push(comic);
       },
       error: (error) => console.error('Error creating comic', error)
     });
   }
+
+
+
 
   uploadComicImage(comicId: string, file: File) {
     const formData = new FormData();
@@ -63,7 +70,7 @@ export class ComicsPageComponent implements OnInit {
           console.log(`File is ${percentDone}% uploaded.`);
         } else if (event instanceof HttpResponse) {
           console.log('Image uploaded successfully', event);
-          this.comic.imageUrl = event.body.imageUrl; // Update the image URL in the stored comic data
+          this.comic.imageUrl = event.body.imageUrl;
         }
       },
       error: (error: HttpErrorResponse) => console.error('Error uploading image', error)
@@ -79,11 +86,11 @@ export class ComicsPageComponent implements OnInit {
   }
 
   logout(): void {
-    // Call the logout method from the UserService
+
     this.userService.logout().subscribe(
       () => {
         console.log('Logout successful');
-        this.isLoggedIn = false; // Update the isLoggedIn flag
+        this.isLoggedIn = false;
       },
       (error) => {
         console.error('Logout failed:', error);
@@ -91,10 +98,9 @@ export class ComicsPageComponent implements OnInit {
     );
   }
     ngOnInit(): void {
-      // Check if the user is logged in
+
       this.isLoggedIn = this.userService.isLoggedIn();
 
-      // Fetch comics
       this.fetchComics();
     }
 
@@ -119,23 +125,48 @@ export class ComicsPageComponent implements OnInit {
   }
 
   openModal(comic: Comic): void {
+    console.log("Apertura modal per il fumetto:", comic);
     this.selectedComic = comic;
   }
+
+  refreshComicData(comicId: number): void {
+    this.comicsService.getComicDetails(comicId).subscribe({
+      next: (comicDetails: ComicDetails) => {
+        const index = this.comics.findIndex(comic => comic.id === comicId);
+        if (index !== -1) {
+          this.comics[index] = comicDetails;
+        }
+      },
+      error: (error) => {
+        console.error(`Failed to refresh comic data for comicId ${comicId}`, error);
+      }
+    });
+  }
   onAddLike(comicId: number): void {
-    this.comicsService.addLikeToComic(comicId).subscribe(() => {
-      // Assuming the comic's like count is updated in real-time
-      const comic = this.comics.find(c => c.id === comicId);
-      if (comic) comic.likes += 1;
+    this.likeService.addLike(comicId).subscribe({
+      next: () => {
+        this.refreshComicData(comicId);
+      },
+      error: (error) => console.error('Error adding like:', error)
     });
   }
 
+
   onAddComment(comicId: number, commentText: string): void {
-    this.comicsService.createComment(comicId, { text: commentText }).subscribe(() => {
-      // Assuming the comic's comments are updated in real-time
-      const comic = this.comics.find(c => c.id === comicId);
-      if (comic) comic.comments.push(commentText);
-    });
+    this.comicsService.postComment(comicId, { text: commentText }).subscribe(
+      (response) => {
+
+        console.log('Comment added successfully:', response);
+
+        const comic = this.comics.find(c => c.id === comicId);
+        if (comic) comic.comments.push(response);
+      },
+      (error) => {
+        console.error('Error adding comment:', error);
+      }
+    );
   }
+
   closeModal(): void {
     this.selectedComic = null;
   }

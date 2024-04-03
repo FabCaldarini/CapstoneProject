@@ -122,12 +122,11 @@
     padding: 0 25px;
   }
 }
-/* dashboard.component.scss */
 .small-logout-btn {
-  padding: 4px 8px !important; /* Explicitly reduce padding, forcing size change */
-  font-size: 0.75rem !important; /* Ensure font size is reduced */
-  margin-right: auto !important; /* Align to the left in a flex container */
-  line-height: 1; /* Adjust line height to suit smaller button */
-  display: inline-block !important; /* Ensure button respects size adjustments */
+  padding: 4px 8px !important;
+  font-size: 0.75rem !important;
+  margin-right: auto !important;
+  line-height: 1;
+  display: inline-block !important;
   justify-content: left !important;
 }

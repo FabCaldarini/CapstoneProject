@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from "../../services/user.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +9,17 @@ import { UserService } from "../../services/user.service";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  // Make userService public to access it in the template
   constructor(
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   logout() {
     this.userService.logout().subscribe(() => {
-      localStorage.removeItem('authToken'); // Consider moving this to your UserService
-      localStorage.removeItem('userRole'); // Consider moving this to your UserService
-      this.router.navigate(['/']); // Redirect to homepage or login page
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('userRole');
+      this.router.navigate(['/']);
     },
     error => {
       console.error('Logout Error:', error);

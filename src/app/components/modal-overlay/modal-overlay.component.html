@@ -1,0 +1,35 @@
+<div class="modal-overlay" *ngIf="selectedComic" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation();">
+    <span class="close-icon" (click)="closeModal(); $event.stopPropagation();">&times;</span>
+    <div class="content-container">
+      <div class="image-section">
+        <img class="modal-image" [src]="selectedComic.imageUrl" alt="Comic Image">
+      </div>
+      <div class="comments-section">
+        <div class="comments-container">
+          <div *ngFor="let comment of comments" class="comment">
+            <small>{{comment.createdAt | date}}</small>
+            <p><strong>{{comment.user.name}} {{comment.user.surname}}</strong>: {{comment.text}}</p>
+
+          </div>
+        </div>
+        <form (submit)="postComment($event)" class="comment-form">
+          <textarea [(ngModel)]="newComment" name="newComment" placeholder="Write a comment..."></textarea>
+
+          <div class="action-buttons">
+            <button type="submit" class="welcome-page-button">Submit</button>
+            <button (click)="toggleLike(); $event.stopPropagation();" class="welcome-page-button like-button">
+  <i class="heart-icon">❤️</i> {{ hasLiked ? 'Dislike' : 'Like' }} {{ likeCount }}
+</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
